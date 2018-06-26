@@ -1,8 +1,9 @@
 {
-  "name": "htmldom2",
+  "name": "@benignware/htmldom2",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "private": true,
   "scripts": {
     "test": "mocha **/*.test.js"
   },
