@@ -1,7 +1,15 @@
+const querySelectorAll = require('query-selector');
+const { XMLSerializer } = require('xmldom');
 const Element = require('./Element');
 const DOMParser = require('./DOMParser');
 
 module.exports = class HTMLElement extends Element {
+  querySelectorAll(selector) {
+    return querySelectorAll(selector, this);
+  }
+  querySelector(selector) {
+    return querySelectorAll(selector, this).shift();
+  }
   set innerHTML(source) {
     while (this.lastChild) {
       this.removeChild(this.lastChild);
@@ -13,5 +21,8 @@ module.exports = class HTMLElement extends Element {
         this.appendChild(child);
       }
     }
+  }
+  get innerHTML() {
+    return (new XMLSerializer()).serializeToString(this);
   }
 };

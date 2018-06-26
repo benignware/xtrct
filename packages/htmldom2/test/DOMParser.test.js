@@ -6,16 +6,12 @@ const { serializeToString } = require('./utils');
 const { DOMParser } = require('..');
 
 describe('DOMParser', function() {
-  const file = path.join(process.cwd(), 'test/fixtures/example.html');
-  const source = fs.readFileSync(file, 'utf-8');
+  describe('parseFromString', () => {
+    it('parses html', () => {
+      const source = fs.readFileSync(`${__dirname}/fixtures/example.html`, 'utf-8');
+      const document = DOMParser.parseFromString(source, 'text/html');
 
-  it('parses basic html', () => {
-    const document = DOMParser.parseFromString(source, 'text/html');
-    assert.equal(
-      serializeToString(
-        DOMParser.parseFromString(document, 'text/html')
-      ),
-      source
-    );
-  });
+      assert.equal(serializeToString(document), source);
+    });
+  })
 });

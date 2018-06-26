@@ -1,11 +1,18 @@
 const DOMImplementation = require('./DOMImplementation')
 
-const XMLElement = DOMImplementation
-  .prototype
-  .createDocument
-  .call(DOMImplementation)
-  .createElement('element')
-  .constructor;
+class Element extends (
+  DOMImplementation
+    .prototype
+    .createDocument
+    .call(DOMImplementation)
+    .createElement('element')
+    .constructor
+  ) {
+    hello() {
+      
+    }
+  };
 
+console.log('Element: ', Element.prototype);
 
-module.exports = class Element extends XMLElement {};
+module.exports = Element;

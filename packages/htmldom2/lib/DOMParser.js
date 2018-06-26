@@ -1,7 +1,7 @@
 const { DOMParser: XMLDOMParser } = require('xmldom');
-const DOMImplementation = require('./DOMImplementation');
 const htmlparser = require("htmlparser2");
-
+const DOMImplementation = require('./DOMImplementation');
+const HTMLElement = require('./HTMLElement');
 
 const domTreeToW3C = (document, { type, name, attribs, children = [], data }) => {
   const nodeTypeMapping = {
@@ -18,6 +18,11 @@ const domTreeToW3C = (document, { type, name, attribs, children = [], data }) =
   for (let child of children) {
     const el = domTreeToW3C(document, child);
     node.appendChild(el);
+  }
+
+  if (node.nodeType === 1) {
+    Object.setPrototypeOf(node, HTMLElement.prototype);
+    node.constructor = HTMLElement;
   }
   return node;
 }
