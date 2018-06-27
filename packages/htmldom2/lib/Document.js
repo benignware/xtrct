@@ -1,9 +1,16 @@
 const { DOMImplementation } = require('xmldom');
-const XMLDocument = DOMImplementation
-  .prototype
-  .createDocument
-  .call(DOMImplementation)
-  .constructor;
+const { compareDocumentPosition } = require('./Node');
 
-module.exports = class Document extends XMLDocument {
+class Document extends (
+  DOMImplementation
+    .prototype
+    .createDocument
+    .call(DOMImplementation)
+    .constructor
+) {
+  compareDocumentPosition(otherNode) {
+    return compareDocumentPosition(this, otherNode);
+  }
 };
+
+module.exports = Document;

@@ -1,4 +1,5 @@
-const DOMImplementation = require('./DOMImplementation')
+const { DOMImplementation } = require('xmldom');
+const { compareDocumentPosition } = require('./Node');
 
 class Element extends (
   DOMImplementation
@@ -7,12 +8,10 @@ class Element extends (
     .call(DOMImplementation)
     .createElement('element')
     .constructor
-  ) {
-    hello() {
-      
-    }
-  };
-
-console.log('Element: ', Element.prototype);
+) {
+  compareDocumentPosition(otherNode) {
+    return compareDocumentPosition(this, otherNode);
+  }
+};
 
 module.exports = Element;

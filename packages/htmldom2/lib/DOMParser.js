@@ -7,7 +7,10 @@ const domTreeToW3C = (document, { type, name, attribs, children = [], data }) =
   const nodeTypeMapping = {
     tag: () => document.createElement(name),
     text: () => document.createTextNode(data),
-    comment: () => document.createComment(data)
+    comment: () => document.createComment(data),
+    script: () => document.createElement('script'),
+    style: () => document.createElement('style'),
+    directive: () => document.createElement('<!-- directive -->')
   };
   if (!nodeTypeMapping[type]) {
     throw new Error(`Unsupported node type: ${type}`);
@@ -18,6 +21,12 @@ const domTreeToW3C = (document, { type, name, attribs, children = [], data }) =
   for (let child of children) {
     const el = domTreeToW3C(document, child);
     node.appendChild(el);
+  }
+
+  if (attribs) {
+    for (let [ name, value ] of Object.entries(attribs)) {
+      node.setAttribute(name, value);
+    }
   }
 
   if (node.nodeType === 1) {

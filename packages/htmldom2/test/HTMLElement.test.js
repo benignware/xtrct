@@ -9,17 +9,29 @@ describe('HTMLElement', function() {
   const document = loadDocument(`${__dirname}/fixtures/example.html`);
 
   describe('querySelectorAll', () => {
-    it('selects elements by css query', () => {
-      const elements = document.documentElement.querySelectorAll('h1');
+    it('selects elements by tagname', () => {
+      const elements = document.documentElement.querySelectorAll('main');
 
-      assert.deepStrictEqual(elements.map(({ nodeName }) => nodeName), [ 'h1' ]);
+      assert.deepStrictEqual(elements.map(({ nodeName }) => nodeName), [ 'main' ]);
+    });
+
+    it('selects elements by id', () => {
+      const elements = document.documentElement.querySelectorAll('#main');
+
+      assert.deepStrictEqual(elements.map(({ nodeName }) => nodeName), [ 'main' ]);
+    });
+
+    it('selects elements by class', () => {
+      const elements = document.documentElement.querySelectorAll('.article');
+
+      assert.deepStrictEqual(elements.map(({ nodeName }) => nodeName), [ 'article' ]);
     });
   });
   describe('querySelector', () => {
-    it('selects a single element by css query', () => {
-      const element = document.documentElement.querySelector('h1');
+    it('selects a single element', () => {
+      const element = document.documentElement.querySelector('main');
 
-      assert.deepStrictEqual(element.nodeName, 'h1');
+      assert.deepStrictEqual(element.nodeName, 'main');
     });
   });
 });

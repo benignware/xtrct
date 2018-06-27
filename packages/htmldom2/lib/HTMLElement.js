@@ -5,10 +5,10 @@ const DOMParser = require('./DOMParser');
 
 module.exports = class HTMLElement extends Element {
   querySelectorAll(selector) {
-    return querySelectorAll(selector, this);
+    return querySelectorAll.call(this, selector, this);
   }
   querySelector(selector) {
-    return querySelectorAll(selector, this).shift();
+    return querySelectorAll.call(this, selector, this).shift();
   }
   set innerHTML(source) {
     while (this.lastChild) {
