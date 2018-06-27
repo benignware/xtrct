@@ -1,6 +1,6 @@
 {
   "name": "@benignware/htmldom2",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Parsing html on top of xmldom and htmlparser2",
   "main": "index.js",
   "scripts": {
