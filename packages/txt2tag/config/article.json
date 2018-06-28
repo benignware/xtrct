@@ -1,6 +1,20 @@
 {
-  "article": 1,
-  ".article": 1,
-  "p": 2,
-  "#main": 1
+  "name": "article",
+  "presets": [
+    "title",
+    "content"
+  ],
+  "plugins": [
+    {
+      "name": "Text2Tag",
+      "scale": 1.4
+    },
+    {
+      "name": "QuerySelector",
+      "options": {
+        "p": 0.1,
+        "b": 0.1
+      }
+    }
+  ]
 }
