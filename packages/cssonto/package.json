@@ -1,0 +1,17 @@
+{
+  "name": "cssonto",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "css-parse": "^2.0.0",
+    "parse-css": "^0.1.0",
+    "postcss": "^6.0.23",
+    "postcss-safe-parser": "^3.0.1"
+  }
+}

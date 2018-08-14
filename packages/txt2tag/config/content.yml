@@ -1,0 +1,3 @@
+p: 1
+'i:not([class*=icon])': 1
+section: 1

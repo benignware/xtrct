@@ -1,0 +1,11 @@
+@entity article {
+  p {
+    text-weight: 100%;
+  }
+}
+
+@entity nav {
+  ul li a {
+
+  }
+}
